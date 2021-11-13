@@ -2,17 +2,8 @@ package ui;
 
 import java.util.Scanner;
 import model.SantasApp;
-/*public static final String ANSI_RESET = "\u001B[0m";
-public static final String ANSI_BLACK = "\u001B[30m";
-public static final String ANSI_RED = "\u001B[31m";
-public static final String ANSI_GREEN = "\u001B[32m";
-public static final String ANSI_YELLOW = "\u001B[33m";
-public static final String ANSI_BLUE = "\u001B[34m";
-public static final String ANSI_PURPLE = "\u001B[35m";
-public static final String ANSI_CYAN = "\u001B[36m";
-public static final String ANSI_WHITE = "\u001B[37m";*/
 
-public class Main{
+public class Main {
 	private Scanner sc;
 	private SantasApp app;
 
@@ -23,9 +14,10 @@ public class Main{
 
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args){
 		Main pc = new Main();
 		int option;
+		System.out.println(" BIENVENIDO A LA APP DE SANTA \n");
 		do {
 		    option = pc.showMenu();
 		    pc.switchAns(option);
@@ -33,8 +25,8 @@ public class Main{
 	}
 
 	public int showMenu(){
-
-		System.out.println(" BIENVENIDO A LA APP DE SANTA \n"+"(1) Add new child\n"+
+		
+		System.out.println("\n"+"(1) Add new child\n"+
 			"(2) Edit child list\n"+
 			"(3) Delete child\n"+
 			"(4) Show a list\n"+
@@ -93,7 +85,7 @@ public class Main{
 		String name = "";
 		String lastName = "";
 		boolean finish = false;
-		if (app.foundPositionWhite() || app.foundPositionBlack()) {
+		if (!app.foundPositionWhite()) {
 			sc.nextLine();
 			System.out.println("Escribe el nombre y apellido del chich@ que vas a cambiar");
 			System.out.println("Nombre\n");
@@ -127,13 +119,13 @@ public class Main{
 		System.out.println("Digita la lista que quieres mostrar 1:buenos , 2:malos");
 		int list = sc.nextInt();
 		if (list==1) {
-			if (app.foundPositionWhite()){
+			if (app.existList(list)){
 				System.out.println(app.showList(list));
 			}else{
 				System.out.println("\nAun no hay chicos en esta lista\n");
 			}
 		}else{
-			if (app.foundPositionBlack()){
+			if (app.existList(list)) {
 				System.out.println(app.showList(list));
 			}else{
 				System.out.println("\nAun no hay chicos en esta lista\n");
@@ -146,7 +138,7 @@ public class Main{
 		String name = "";
 		String lastName = "";
 		boolean finish = false;
-		if (app.foundPositionWhite() || app.foundPositionBlack()) {
+		if (!app.foundPositionWhite()) {
 			sc.nextLine();
 			
 				System.out.println("Escribe el nombre y apellido del chich@ que vas a borrar");
@@ -182,7 +174,7 @@ public class Main{
 		String name = "";
 		String lastName = "";
 		boolean finish = false;
-		if (app.foundPositionWhite() || app.foundPositionBlack()) {
+		if (!app.foundPositionWhite()) {
 			sc.nextLine();
 			
 				System.out.println("Escribe el nombre y apellido del chich@ que quieres mostrar");
